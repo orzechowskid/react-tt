@@ -1,0 +1,150 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import Tooltip from '../src/index';
+
+const t1 =
+`<div>
+  <span>hover over me</span>
+  <Tooltip>
+    <img src="frank.jpg" />
+  </Tooltip>
+</div>`;
+const t2 =
+`<div>
+  <span>hover over me</span>
+  <Tooltip location="bottom">
+    <img src="frank.jpg" style={{ margin: '6px' }}/>
+  </Tooltip>
+</div>`;
+const t3 =
+    `<Tooltip>
+  <span>here is a tooltip with some text</span>
+</Tooltip>`;
+const t4 =
+    `<Tooltip backgroundColor="red">
+  <span className="my-class">
+    {myTooltipText}
+  </span>
+</Tooltip>`;
+
+ReactDOM.render(
+    <div style={{ width: `75%`, margin: `0 auto` }}>
+        <p>
+            by default, the tooltip renders above its element...
+        </p>
+        <div style={{ display: `flex` }}>
+            <div>
+                <pre>{t1}</pre>
+            </div>
+            <div style={{ margin: `0 32px` }}>
+                <div style={{ fontSize: `48px` }}>&rarr;</div>
+                <div>becomes...</div>
+            </div>
+            <div>
+                <div>
+                    <span>hover over me</span>
+                    <Tooltip id="t1">
+                        <img alt="" src="frank.jpg" />
+                    </Tooltip>
+                </div>
+            </div>
+        </div>
+        <p>
+            ...but that can be changed via the <tt>location</tt> prop:
+        </p>
+        <div style={{ display: `flex` }}>
+            <div>
+                <pre>{t2}</pre>
+            </div>
+            <div style={{ margin: `0 32px` }}>
+                <div style={{ fontSize: `48px` }}>&rarr;</div>
+            </div>
+            <div style={{ alignSelf: `center` }}>
+                <div>
+                    <span>hover over me</span>
+                    <Tooltip
+                        id="t2"
+                        location="bottom"
+                    >
+                        <img alt="" src="frank.jpg" style={{ margin: `6px` }} />
+                    </Tooltip>
+                </div>
+            </div>
+        </div>
+        <p>
+            right now, only <tt>bottom</tt> and <tt>top</tt> are supported.
+        </p>
+        <p>
+            you can also put text inside your tooltip, of course:
+        </p>
+        <div aria-labelledby="t3">
+            <pre>{t3}</pre>
+            <Tooltip id="t3">
+                here is a tooltip with some text
+            </Tooltip>
+        </div>
+        <p>
+            ...but it probably won't show up too well since by default the tooltip background is dark and (most likely) so is your text.  Let's change that with the <tt>backgroundColor</tt> prop:
+        </p>
+        <div style={{ display: `flex` }}>
+            <div
+                id="t4"
+                style={{ overflow: `hidden`, width: '33%' }}
+            >
+                <pre>{t4}</pre>
+                <Tooltip
+                    backgroundColor="red"
+                    id="t4"
+                >
+                    <div style={{ display: 'inline-block', padding: '12px', whiteSpace: 'nowrap' }}>
+                        here is a tooltip with text inside of it.  notice how it's as centered as possible while still remaining on the screen.
+                    </div>
+                </Tooltip>
+            </div>
+            <div style={{
+                margin: `8px`, padding: `8px`, border: `1px solid #222222`, alignSelf: `flex-end`
+            }}
+            >
+                <span>?</span>
+                <Tooltip id="tq">
+                    <div style={{ color: `white`, padding: `8px 10px` }}>
+                        you know you can hover over the gray boxes, right?
+                    </div>
+                </Tooltip>
+            </div>
+        </div>
+        <p>
+            much better!  This prop accepts any string corresponding to a valid CSS color rule, so named colors like <tt>salmon</tt> are okay as well as <tt>#rrggbb</tt>, <tt>rgb(r, g, b)</tt>, and so on.
+        </p>
+        <div
+            id="t5"
+            style={{ overflow: `hidden`, width: '10%', marginLeft: `auto` }}
+        >
+            <pre>{t4}</pre>
+            <Tooltip
+                backgroundColor="salmon"
+                id="t5"
+                location="bottom"
+            >
+                <div style={{ display: 'inline-block', padding: '12px', whiteSpace: 'nowrap' }}>
+                    here is a tooltip with some text
+                </div>
+            </Tooltip>
+        </div>
+        <div
+            id="t6"
+            style={{ width: '45%', margin: `0 auto` }}
+        >
+            <tt>{t4}</tt>
+            <Tooltip
+                backgroundColor="salmon"
+                id="t6"
+            >
+                <div style={{ display: 'inline-block', padding: '12px', whiteSpace: 'nowrap' }}>
+                    here is a tooltip with some text
+                </div>
+            </Tooltip>
+        </div>
+    </div>
+    , document.getElementById(`app`));
