@@ -1,0 +1,79 @@
+{
+  "name": "react-tt",
+  "version": "1.0.1",
+  "description": "minimal, responsive, React tooltip component",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "jest --coverage src/",
+    "build:dev": "NODE_ENV=development rollup -c rollup.config.js",
+    "build:example": "NODE_ENV=development APP_ENV=example rollup -c rollup.config.js",
+    "build:prod": "NODE_ENV=production rollup -c rollup.config.js",
+    "preexample": "npm run build:example",
+    "example": "static -a 0.0.0.0 example/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/orzechowskid/react-tt.git"
+  },
+  "keywords": [
+    "react",
+    "tooltip"
+  ],
+  "author": "orzechod@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/orzechowskid/react-tt/issues"
+  },
+  "homepage": "https://github.com/orzechowskid/react-tt#readme",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.scss$": "identity-obj-proxy"
+    },
+    "setupFiles": [
+      "<rootDir>/__tests__/setup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
+  },
+  "dependencies": {
+    "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "check-prop-types": "^1.1.2",
+    "cssnano": "^3.10.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^22.4.2",
+    "node-sass": "^4.7.2",
+    "node-static": "^0.7.10",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-simple-vars": "^4.1.0",
+    "prop-types": "^15.6.1",
+    "react-dom": "^16.2.0",
+    "rollup": "^0.56.2",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^3.0.3",
+    "rollup-plugin-postcss": "^1.2.8",
+    "rollup-plugin-postcss-modules": "^1.0.8",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-uglify": "^3.0.0",
+    "sass-export": "^1.0.2",
+    "uglify-es": "^3.3.9"
+  }
+}

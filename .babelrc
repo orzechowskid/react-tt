@@ -1,0 +1,54 @@
+{
+    "env": {
+        "test": {
+            "plugins": [[
+                "transform-class-properties"
+            ], [
+                "transform-object-rest-spread"
+            ]],
+            "presets": [[
+                "env", {
+                    "modules": "commonjs",
+                    "useBuiltIns": "usage",
+                    "debug": false
+                }
+            ], [
+                "react"
+            ], [
+                "jest"
+            ]]
+        },
+        "development": {
+            "plugins": [[
+                "external-helpers"
+            ], [
+                "transform-class-properties"
+            ], [
+                "transform-object-rest-spread"
+            ]]
+        },
+        "production": {
+            "plugins": [[
+                "external-helpers"
+            ], [
+                "transform-class-properties"
+            ], [
+                "transform-object-rest-spread"
+            ]]
+        }
+    },
+    "ignore": [
+        "node_modules/**/*"
+    ],
+    "plugins": [],
+    "presets": [[
+        "env", {
+            "modules": false,
+            "targets": {
+                "browsers": [ "last 2 versions" ]
+            }
+        }
+    ], [
+        "react"
+    ]]
+}

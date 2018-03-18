@@ -1,0 +1,47 @@
+$background-color: #222222;
+$arrow-size: 7px;
+$arrow-size-neg: $arrow-size * -1;
+$offset: $arrow-size + 4;
+$offset-neg: $offset * -1;
+
+:export {
+    backgroundColor: $background-color;
+    spacing: $arrow-size * 2;
+}
+
+.arrow {
+    border: $arrow-size solid transparent;
+    left: $arrow-size-neg !important;
+    position: absolute !important;
+
+    &.bottom {
+        bottom: 100% !important;
+    }
+}
+
+.wrapper {
+    position: fixed !important;
+
+    /* state */
+    &.invisible {
+        pointer-events: none !important;
+        visibility: hidden !important;
+    }
+    &.visible {
+        pointer-events: auto !important;
+        visibility: visible !important;
+    }
+}
+
+/* tooltips are screen-media only */
+@media print {
+    .wrapper {
+        display: none !important;
+    }
+}
+@media speech {
+    .wrapper {
+        display: none !important;
+    }
+}
+
