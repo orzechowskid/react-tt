@@ -41,7 +41,7 @@ function HelloComponent(props) {
 export default MyComponent
 ```
 
-for live examples, clone this repository and run `npm run example` then visit localhost:8080 .
+for live examples, clone this repository and run `npm run example` then visit localhost:8080 or just go to [https://orzechowskid.github.io/react-tt/](https://orzechowskid.github.io/react-tt/) .
 
 # API
 
