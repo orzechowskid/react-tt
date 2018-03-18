@@ -77,5 +77,15 @@ specifies the tooltip's z-index.  Defaults to 0.
 
 # Development
 
+    $ git clone https://www.github.com/orzechowskid/react-tt.git
+    $ npm install
+    $ cd src
+    [ ... edit edit edit ... ]
+    $ npm run example
+    $ open http://localhost:8080
+    [ ... verify verify verify ... ]
+    $ npm run build:prod
+
 # Testing
 
+`npm run test` should run the test suite.  please update it if you add features.
