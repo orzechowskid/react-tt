@@ -1,188 +1,55 @@
 module.exports = {
-  root: true,
-
-  parser: 'babel-eslint',
-
-  // import plugin is temporarily disabled, scroll below to see why
-  plugins: [/*'import', */'flowtype', 'jsx-a11y', 'react'],
-
-  env: {
-    browser: true,
-    commonjs: true,
-    es6: true,
-    jasmine: true,
-    jest: true,
-    node: true
-  },
-
-  globals: {
-  },
-
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-      generators: true,
-      experimentalObjectRestSpread: true
+    "extends": "eslint-config-airbnb",
+    "parser": "babel-eslint",
+    "plugins": [ "import" ],
+    "rules": {
+        "array-bracket-spacing": [ "warn", "always", {
+            "objectsInArrays": false
+        } ],
+        "arrow-body-style": [ "warn", "as-needed" ],
+        "arrow-parens": [ "warn", "always" ],
+        "comma-dangle": [ "warn", "never" ],
+        "func-names": "off",
+        "function-paren-newline": "off",
+        "import/named": "warn",
+        //"import/no-named-as-default": "off", // kinda slow
+        //"import/no-named-as-default-member": "off", // kinda slow
+        "indent": [ "warn", 4, {
+            "SwitchCase": 1
+        } ],
+        /* https://github.com/facebookincubator/create-react-app/issues/2631 */
+        "jsx-a11y/href-no-hash": "off",
+        "no-console": [ "error", {
+            "allow": [ "info", "warn", "error" ]
+        } ],
+        "no-extra-semi": "warn",
+        "import/no-extraneous-dependencies": [ "warn", {
+            "devDependencies": true
+        } ],
+        "no-plusplus": [ "warn", {
+            "allowForLoopAfterthoughts": true
+        } ],
+        "no-trailing-spaces": "warn",
+        "no-undef": "warn",
+        "no-underscore-dangle": [ "warn", {
+            "allow": [ "_id" ] // mongoDB :|
+        } ],
+        "no-unused-vars": [ "warn", {
+            "ignoreRestSiblings": true
+        } ],
+        "prefer-arrow-callback": "off",
+        "prefer-destructuring": [ "warn" ],
+        "quotes": "off",
+/*        "quotes": [ "error", "backtick", {
+            "avoidEscape": true
+        } ], */
+        "react/jsx-filename-extension": "off",
+        "react/jsx-indent": [ "warn", 4 ],
+        "react/jsx-indent-props": [ "warn", 4 ],
+        "space-before-function-paren": [ "warn", {
+            "anonymous": "never",
+            "asyncArrow": "always",
+            "named": "never"
+        } ]
     }
-  },
-
-  settings: {
-    'import/ignore': [
-      'node_modules',
-      '\\.(json|css|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$',
-    ],
-    'import/extensions': ['.js'],
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.json']
-      }
-    }
-  },
-
-  rules: {
-    // http://eslint.org/docs/rules/
-    'array-callback-return': 'warn',
-    'default-case': ['warn', { commentPattern: '^no default$' }],
-    'dot-location': ['warn', 'property'],
-    eqeqeq: ['warn', 'allow-null'],
-    'guard-for-in': 'warn',
-    'new-parens': 'warn',
-    'no-array-constructor': 'warn',
-    'no-caller': 'warn',
-    'no-cond-assign': ['warn', 'always'],
-    'no-const-assign': 'warn',
-    'no-control-regex': 'warn',
-    'no-delete-var': 'warn',
-    'no-dupe-args': 'warn',
-    'no-dupe-class-members': 'warn',
-    'no-dupe-keys': 'warn',
-    'no-duplicate-case': 'warn',
-    'no-empty-character-class': 'warn',
-    'no-empty-pattern': 'warn',
-    'no-eval': 'warn',
-    'no-ex-assign': 'warn',
-    'no-extend-native': 'warn',
-    'no-extra-bind': 'warn',
-    'no-extra-label': 'warn',
-    'no-fallthrough': 'warn',
-    'no-func-assign': 'warn',
-    'no-implied-eval': 'warn',
-    'no-invalid-regexp': 'warn',
-    'no-iterator': 'warn',
-    'no-label-var': 'warn',
-    'no-labels': ['warn', { allowLoop: false, allowSwitch: false }],
-    'no-lone-blocks': 'warn',
-    'no-loop-func': 'warn',
-    'no-mixed-operators': ['warn', {
-      groups: [
-        ['&', '|', '^', '~', '<<', '>>', '>>>'],
-        ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-        ['&&', '||'],
-        ['in', 'instanceof']
-      ],
-      allowSamePrecedence: false
-    }],
-    'no-multi-str': 'warn',
-    'no-native-reassign': 'warn',
-    'no-negated-in-lhs': 'warn',
-    'no-new-func': 'warn',
-    'no-new-object': 'warn',
-    'no-new-symbol': 'warn',
-    'no-new-wrappers': 'warn',
-    'no-obj-calls': 'warn',
-    'no-octal': 'warn',
-    'no-octal-escape': 'warn',
-    'no-redeclare': 'warn',
-    'no-regex-spaces': 'warn',
-    'no-restricted-syntax': [
-      'warn',
-      'LabeledStatement',
-      'WithStatement',
-    ],
-    'no-script-url': 'warn',
-    'no-self-assign': 'warn',
-    'no-self-compare': 'warn',
-    'no-sequences': 'warn',
-    'no-shadow-restricted-names': 'warn',
-    'no-sparse-arrays': 'warn',
-    'no-template-curly-in-string': 'warn',
-    'no-this-before-super': 'warn',
-    'no-throw-literal': 'warn',
-    'no-trailing-spaces': 'warn',
-    'no-undef': 'error',
-    'no-unexpected-multiline': 'warn',
-    'no-unreachable': 'warn',
-    'no-unused-expressions': 'warn',
-    'no-unused-labels': 'warn',
-    'no-unused-vars': ['warn', {
-      vars: 'local',
-      varsIgnorePattern: '^_',
-      args: 'none'
-    }],
-    'no-use-before-define': ['warn', 'nofunc'],
-    'no-useless-computed-key': 'warn',
-    'no-useless-concat': 'warn',
-    'no-useless-constructor': 'warn',
-    'no-useless-escape': 'warn',
-    'no-useless-rename': ['warn', {
-      ignoreDestructuring: false,
-      ignoreImport: false,
-      ignoreExport: false,
-    }],
-    'no-with': 'warn',
-    'no-whitespace-before-property': 'warn',
-    'operator-assignment': ['warn', 'always'],
-    radix: 'warn',
-    'require-yield': 'warn',
-    'rest-spread-spacing': ['warn', 'never'],
-    'space-before-function-paren': ['warn', {
-        'anonymous': 'never',
-        'asyncArrow': 'always',
-        'named': 'never'
-    }],
-    strict: ['warn', 'never'],
-    'unicode-bom': ['warn', 'never'],
-    'use-isnan': 'warn',
-    'valid-typeof': 'warn',
-
-    'import/default': 'warn',
-    'import/export': 'warn',
-    'import/named': 'warn',
-    'import/namespace': 'warn',
-    'import/no-amd': 'warn',
-    'import/no-duplicates': 'warn',
-    'import/no-extraneous-dependencies': 'warn',
-    'import/no-named-as-default': 'warn',
-    'import/no-named-as-default-member': 'warn',
-    'import/no-unresolved': ['warn', { commonjs: true }],
-
-    // https://github.com/yannickcr/eslint-plugin-react/tree/master/docs/rules
-    'react/jsx-equals-spacing': ['warn', 'never'],
-    'react/jsx-no-duplicate-props': ['warn', { ignoreCase: true }],
-    'react/jsx-no-undef': 'warn',
-    'react/jsx-pascal-case': ['warn', {
-      allowAllCaps: true,
-      ignore: [],
-    }],
-    'react/jsx-uses-react': 'warn',
-    'react/jsx-uses-vars': 'warn',
-    'react/no-deprecated': 'warn',
-    'react/no-direct-mutation-state': 'warn',
-    'react/no-is-mounted': 'warn',
-    'react/react-in-jsx-scope': 'warn',
-    'react/require-render-return': 'warn',
-
-    // https://github.com/evcohen/eslint-plugin-jsx-a11y/tree/master/docs/rules
-    'jsx-a11y/aria-role': 'warn',
-    'jsx-a11y/alt-text': 'warn',
-    'jsx-a11y/img-redundant-alt': 'warn',
-    'jsx-a11y/no-access-key': 'warn',
-
-    // https://github.com/gajus/eslint-plugin-flowtype
-    'flowtype/define-flow-type': 'warn',
-    'flowtype/require-valid-file-annotation': 'warn',
-    'flowtype/use-flow-type': 'warn'
-  }
 };
