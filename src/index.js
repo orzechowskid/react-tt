@@ -45,6 +45,7 @@ class TT extends React.Component {
         this.parentEl = null;
         this.bodyEl = null;
         this.componentEl = null;
+        this.resizeTimerHandle = null;
     }
 
     componentDidMount() {
@@ -64,6 +65,7 @@ class TT extends React.Component {
         this.el = null;
         this.bodyEl = null;
         this.componentEl = null;
+        this.resizeTimerHandle = null;
     }
 
     onMouseEnter = () => {
@@ -76,6 +78,20 @@ class TT extends React.Component {
         if (!this.props.sticky) {
             this.hide();
         }
+    }
+
+    onResize = () => {
+        console.log(`derp`);
+        window.clearTimeout(this.resizeTimerHandle);
+
+        this.resizeTimerHandle = window.setTimeout(() => {
+            console.log(`resized!`);
+            if (!this.state.showTooltip) {
+                return;
+            }
+
+            this.forceUpdate();
+        }, 250);
     }
 
     onScroll = (e) => {
@@ -91,10 +107,12 @@ class TT extends React.Component {
             this.parentEl.addEventListener(`mouseenter`, this.onMouseEnter);
             this.parentEl.addEventListener(`mouseleave`, this.onMouseLeave);
             window.addEventListener(`scroll`, this.onScroll);
+            window.addEventListener(`resize`, this.onResize);
         } else {
             this.parentEl.removeEventListener(`mouseenter`, this.onMouseEnter);
             this.parentEl.removeEventListener(`mouseleave`, this.onMouseLeave);
             window.removeEventListener(`scroll`, this.onScroll);
+            window.removeEventListener(`resize`, this.onResize);
         }
     }
 
