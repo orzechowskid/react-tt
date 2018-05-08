@@ -109,6 +109,15 @@ describe(`the tooltip component`, function() {
         expect(wrapper.render()).toMatchSnapshot();
     });
 
+    it(`shows itself by default if sticky is enabled`, function() {
+        const wrapper = mount(
+            <Tooltip id="test-tooltip" sticky>
+                hello
+            </Tooltip>
+        );
+        expect(wrapper.render()).toMatchSnapshot();
+    });
+
     describe(`API contract`, function() {
         const mockPropTypes = {
             id: `foo`
@@ -146,7 +155,8 @@ describe(`the tooltip component`, function() {
                 backgroundColor: `#222222`,
                 location: `top`,
                 spacing: 14,
-                zIndex: 0
+                zIndex: 0,
+                sticky: false
             });
         });
     });

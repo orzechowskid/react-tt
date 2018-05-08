@@ -75,6 +75,10 @@ specifies the spacing between the tooltip's indicator and its container.  Defaul
 
 specifies the tooltip's z-index.  Defaults to 0.
 
+## props.sticky: PropTypes.bool
+
+specifies the tooltip to always be shown.  Defaults to false.
+
 # Development
 
     $ git clone https://www.github.com/orzechowskid/react-tt.git

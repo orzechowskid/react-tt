@@ -30,6 +30,12 @@ const t4 =
     {myTooltipText}
   </span>
 </Tooltip>`;
+const t5 =
+    `<Tooltip backgroundColor="#FEC50C" sticky>
+  <span className="my-class">
+    {myTooltipText}
+  </span>
+</Tooltip>`;
 
 ReactDOM.render(
     <div>
@@ -109,5 +115,26 @@ ReactDOM.render(
         <p>
             much better!  This prop accepts any string corresponding to a valid CSS color rule, so named colors like <tt>salmon</tt> are okay as well as <tt>#rrggbb</tt>, <tt>rgb(r, g, b)</tt>, and so on.
         </p>
+        <p>
+            to make tooltip visible by default, use the <tt>sticky</tt> prop:
+        </p>
+        <div className="example">
+            <div>
+                <pre>{t5}</pre>
+            </div>
+            <div className="arrow">&rarr;</div>
+            <div>
+                <span>hover over me</span>
+                <Tooltip
+                    backgroundColor="#FEC50C"
+                    id="t4"
+                    sticky
+                >
+                    <div style={{ padding: '12px', whiteSpace: 'nowrap' }}>
+                        here is a stickied tooltip; you can't get rid of me!
+                    </div>
+                </Tooltip>
+            </div>
+        </div>
     </div>
     , document.getElementById(`app`));

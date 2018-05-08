@@ -5,7 +5,7 @@ exports[`the tooltip component hides itself upon mouse enter 1`] = `
   class="wrapper top invisible"
   id="test-tooltip"
   role="tooltip"
-  style="left: 0px;"
+  style="left: 0px; top: -15px;"
 >
   <div
     class="top invisible"
@@ -33,7 +33,7 @@ exports[`the tooltip component hides itself upon parent mouse leave 1`] = `
   class="wrapper top invisible"
   id="test-tooltip"
   role="tooltip"
-  style="left: 0px;"
+  style="left: 0px; top: -15px;"
 >
   <div
     class="top invisible"
@@ -98,12 +98,39 @@ exports[`the tooltip component renders as expected 1`] = `
 </div>
 `;
 
+exports[`the tooltip component shows itself by default if sticky is enabled 1`] = `
+<div
+  class="wrapper top visible"
+  id="test-tooltip"
+  role="tooltip"
+>
+  <div
+    class="top visible"
+    style="visibility: visible;"
+  >
+    <div
+      class="top visible"
+    >
+      <div
+        style="background-color: rgb(34, 34, 34);"
+      >
+        hello
+      </div>
+    </div>
+    <div
+      class="arrow top visible"
+      style="border-top-color: #222222;"
+    />
+  </div>
+</div>
+`;
+
 exports[`the tooltip component shows itself upon parent mouse enter 1`] = `
 <div
   class="wrapper top visible"
   id="test-tooltip"
   role="tooltip"
-  style="left: 0px;"
+  style="left: 0px; top: -15px;"
 >
   <div
     class="top visible"
