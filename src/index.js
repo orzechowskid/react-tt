@@ -81,11 +81,9 @@ class TT extends React.Component {
     }
 
     onResize = () => {
-        console.log(`derp`);
         window.clearTimeout(this.resizeTimerHandle);
 
         this.resizeTimerHandle = window.setTimeout(() => {
-            console.log(`resized!`);
             if (!this.state.showTooltip) {
                 return;
             }
