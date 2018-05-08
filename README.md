@@ -4,7 +4,7 @@ no-fuss React tooltips
 
 # About
 
-I didn't especially like any of the React tooltip libraries I found out there; either they didn't fit my use-case, they were too big, or they plain didn't work.  react-tt is tiny (<6KB prod-minified), and it doesn't add any extra elements to your DOM or wrap around anything but your tooltip contents, and it tries hard to ensure all tooltip contents fit inside the viewport.
+I didn't especially like any of the React tooltip libraries I found out there; either they didn't fit my use-case, they were too big, or they plain didn't work.  react-tt is tiny (~6KB prod-minified), it won't screw up your layout with extra elements, and it tries hard to ensure all tooltip contents fit inside the viewport.
 
 # Getting Started
 
@@ -71,13 +71,13 @@ specifies the orientation of the tooltip relative to its container.  Defaults to
 
 specifies the spacing between the tooltip's indicator and its container.  Defaults to `14` (px).
 
-## props.zIndex: PropTypes.number
-
-specifies the tooltip's z-index.  Defaults to 0.
-
 ## props.sticky: PropTypes.bool
 
 specifies the tooltip to always be shown.  Defaults to false.
+
+## props.zIndex: PropTypes.number
+
+specifies the tooltip's z-index.  Defaults to 0.
 
 # Development
 
