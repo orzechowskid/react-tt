@@ -21,7 +21,8 @@ class TT extends React.Component {
         id: PropTypes.string.isRequired,
         location: TOOLTIP_LOCATION_SHAPE,
         spacing: PropTypes.number,
-        zIndex: PropTypes.number
+        zIndex: PropTypes.number,
+        sticky: PropTypes.bool
     }
 
     // TODO: import some stuff from the style file, but that requires figuring
@@ -30,14 +31,15 @@ class TT extends React.Component {
         backgroundColor: `#222222`,
         location: `top`,
         spacing: 14, // px
-        zIndex: 0
+        zIndex: 0,
+        sticky: false
     }
 
     constructor(props) {
         super(props);
 
         this.state = {
-            showTooltip: false
+            showTooltip: props.sticky
         };
         this.el = null;
         this.parentEl = null;
@@ -61,11 +63,15 @@ class TT extends React.Component {
     }
 
     onMouseEnter = () => {
-        this.show();
+        if (!this.props.sticky) {
+            this.show();
+        }
     }
 
     onMouseLeave = () => {
-        this.hide();
+        if (!this.props.sticky) {
+            this.hide();
+        }
     }
 
     onScroll = (e) => {
