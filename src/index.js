@@ -39,7 +39,7 @@ class TT extends React.Component {
         super(props);
 
         this.state = {
-            showTooltip: props.sticky
+            showTooltip: false
         };
         this.el = null;
         this.parentEl = null;
@@ -51,6 +51,10 @@ class TT extends React.Component {
         this.parentEl = this.el.parentElement;
 
         this.applyListeners(true);
+
+        if (this.props.sticky) {
+            this.show();
+        }
     }
 
     componentWillUnmount() {
