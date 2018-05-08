@@ -103,6 +103,7 @@ exports[`the tooltip component shows itself by default if sticky is enabled 1`] 
   class="wrapper top visible"
   id="test-tooltip"
   role="tooltip"
+  style="left: 0px; top: -15px;"
 >
   <div
     class="top visible"
