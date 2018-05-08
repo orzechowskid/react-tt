@@ -86,7 +86,7 @@ specifies the tooltip to always be shown.  Defaults to false.
     $ cd src
     [ ... edit edit edit ... ]
     $ npm run example
-    $ open http://localhost:8080
+    $ open http://localhost:8808
     [ ... verify verify verify ... ]
     $ npm run build:prod
 
