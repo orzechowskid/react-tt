@@ -3,14 +3,14 @@
   "version": "1.0.1",
   "description": "minimal, responsive, React tooltip component",
   "main": "dist/index.js",
-  "module": "src/index.js",
+  "module": "esm/index.js",
   "scripts": {
     "test": "jest --coverage src/",
     "build:dev": "NODE_ENV=development rollup -c rollup.config.js",
     "build:example": "NODE_ENV=development APP_ENV=example rollup -c rollup.config.js",
     "build:prod": "NODE_ENV=production rollup -c rollup.config.js",
     "preexample": "npm run build:example",
-    "example": "static -a 0.0.0.0 example/"
+    "example": "static -a 0.0.0.0 -p 8808 example/"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
       "^.+\\.js$": "babel-jest"
     }
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^16.2.0"
   },
   "devDependencies": {

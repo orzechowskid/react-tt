@@ -27,6 +27,13 @@
                 "transform-object-rest-spread"
             ]]
         },
+        "esm": {
+            "plugins": [[
+                "transform-class-properties"
+            ], [
+                "transform-object-rest-spread"
+            ]]
+        },
         "production": {
             "plugins": [[
                 "external-helpers"

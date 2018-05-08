@@ -1,3 +1,4 @@
+.babelrc
 example/index.dist.js
 node_modules/**/*
 **/.tern-port

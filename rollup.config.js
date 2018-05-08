@@ -27,16 +27,33 @@ function sassPreprocessor(content, id) {
     });
 }
 
-const config = {
+const baseConfig = {
+    external: [
+        `prop-types`,
+        `react`,
+        `react-dom`
+    ],
     input: `src/index.js`,
     output: {
-        file: `dist/index.js`,
-        format: `umd`,
-        name: `ReactTT`
+        name: `ReactTT`,
+        sourcemap: APP_ENV !== `production`
+            ? `inline`
+            : false
     },
     plugins: [
         replace({
             "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
+        }),
+        postcss({
+            extensions: [ `.css`, `.scss` ],
+            plugins: [
+                simpleVars(),
+                cssnext({
+                    warnForDuplicates: false
+                })
+            ],
+            preprocessor: sassPreprocessor,
+            writeDefinitions: false
         }),
         nodeResolve({
             browser: true,
@@ -51,88 +68,67 @@ const config = {
     ]
 };
 
-switch (APP_ENV) {
-    case `development`:
-        config.output.sourcemap = `inline`;
-        config.plugins.unshift(
-            commonjs({
-                include: [
-                    `node_modules/prop-types/**/*`,
-                    `node_modules/react/**/*`
-                ]
-            }),
-        );
-        config.plugins.unshift(
-            postcss({
-                extensions: [ `.css`, `.scss` ],
-                plugins: [
-                    simpleVars(),
-                    cssnext({
-                        warnForDuplicates: false
-                    })
-                ],
-                preprocessor: sassPreprocessor,
-                writeDefinitions: false
-            })
-        );
-
-        break;
-    case `example`:
-        config.input = `example/index.src.js`;
-        config.output.file = `example/index.dist.js`;
-        config.output.format = `iife`;
-        config.output.sourcemap = `inline`;
-        config.plugins.unshift(
-            commonjs({
-                include: /node_modules/,
-                sourcemap: false
-            })
-        );
-        config.plugins.unshift(
-            postcss({
-                extensions: [ `.css`, `.scss` ],
-                plugins: [
-                    simpleVars(),
-                    cssnext({
-                        warnForDuplicates: false
-                    })
-                ],
-                preprocessor: sassPreprocessor,
-                writeDefinitions: false
-            })
-        );
-
-        break;
-    case `production`:
-        config.output.globals = {
+const umdConfig = {
+    ...baseConfig,
+    output: {
+        ...baseConfig.output,
+        file: `dist/index.js`,
+        format: `umd`,
+        globals: {
             'prop-types': `PropTypes`,
             react: `React`,
             'react-dom': 'ReactDOM'
-        };
-        config.output.sourcemap = false;
-        config.external = [
-            `prop-types`,
-            `react`,
-            `react-dom`
-        ];
-        config.plugins.unshift(
-            postcss({
-                extensions: [ `.css`, `.scss` ],
-                plugins: [
-                    simpleVars(),
-                    cssnext({
-                        warnForDuplicates: false
-                    }),
-                    cssnano()
-                ],
-                preprocessor: sassPreprocessor,
-                writeDefinitions: false
-            })
-        );
-        config.plugins.push(uglify({}, minify));
+        }
+    },
+    plugins: [
+        ...baseConfig.plugins,
+        ...(APP_ENV === `development`
+            ? []
+            : [ uglify({}, minify) ])
+        ]
+};
 
-        break;
-    default:
-}
+const esmConfig = {
+    ...baseConfig,
+    output: {
+        ...baseConfig.output,
+        file: `esm/index.js`,
+        format: `es`
+    },
+    plugins: [
+        ...baseConfig.plugins,
+        ...(APP_ENV === `development`
+            ? []
+            : [ uglify({}, minify) ])
+    ]
+};
 
-export default config;
+const demoConfig = {
+    ...baseConfig,
+    external: [],
+    input: `example/index.src.js`,
+    output: {
+        ...baseConfig.output,
+        file: `example/index.dist.js`,
+        format: `iife`,
+        globals: {},
+        sourcemap: `inline`
+    },
+    plugins: [
+        commonjs({
+            include: [
+                /node_modules/,
+                `node_modules/prop-types/**/*`,
+                `node_modules/react/**/*`
+            ],
+            sourcemap: false
+        }),
+        ...baseConfig.plugins
+    ]
+};
+
+export default [
+    umdConfig,
+    esmConfig,
+    demoConfig
+];
