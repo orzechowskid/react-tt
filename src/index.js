@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -92,7 +94,7 @@ class TT extends React.Component {
         }, 250);
     }
 
-    onScroll = (e) => {
+    onScroll = () => {
         if (!this.state.showTooltip) {
             return;
         }
@@ -163,6 +165,7 @@ class TT extends React.Component {
          * tooltip if the cursor enters it */
         return (
             <div
+                aria-hidden={!showTooltip}
                 className={wrapperClassName}
                 id={id}
                 onMouseEnter={this.onMouseLeave}

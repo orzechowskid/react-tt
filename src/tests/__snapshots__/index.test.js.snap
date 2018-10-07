@@ -2,6 +2,7 @@
 
 exports[`the tooltip component hides itself upon mouse enter 1`] = `
 <div
+  aria-hidden="true"
   class="wrapper top invisible"
   id="test-tooltip"
   role="tooltip"
@@ -30,6 +31,7 @@ exports[`the tooltip component hides itself upon mouse enter 1`] = `
 
 exports[`the tooltip component hides itself upon parent mouse leave 1`] = `
 <div
+  aria-hidden="true"
   class="wrapper top invisible"
   id="test-tooltip"
   role="tooltip"
@@ -58,6 +60,7 @@ exports[`the tooltip component hides itself upon parent mouse leave 1`] = `
 
 exports[`the tooltip component renders as expected 1`] = `
 <div
+  aria-hidden={true}
   className="wrapper top invisible"
   id="test-tooltip"
   onMouseEnter={[Function]}
@@ -100,6 +103,7 @@ exports[`the tooltip component renders as expected 1`] = `
 
 exports[`the tooltip component shows itself by default if sticky is enabled 1`] = `
 <div
+  aria-hidden="false"
   class="wrapper top visible"
   id="test-tooltip"
   role="tooltip"
@@ -128,6 +132,7 @@ exports[`the tooltip component shows itself by default if sticky is enabled 1`] 
 
 exports[`the tooltip component shows itself upon parent mouse enter 1`] = `
 <div
+  aria-hidden="false"
   class="wrapper top visible"
   id="test-tooltip"
   role="tooltip"

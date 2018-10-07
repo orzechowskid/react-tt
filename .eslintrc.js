@@ -1,7 +1,10 @@
 module.exports = {
     //"extends": "eslint-config-airbnb",
     "parser": "babel-eslint",
-    "plugins": [ "import" ],
+    "plugins": [
+        "import",
+        "react"
+    ],
     "rules": {
         "array-bracket-spacing": [ "warn", "always", {
             "objectsInArrays": false
