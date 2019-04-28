@@ -1,17 +1,16 @@
-import cssnano from "cssnano";
+/* eslint-env node */
+
 import sass from "node-sass";
 import cssnext from "postcss-cssnext";
 import simpleVars from "postcss-simple-vars";
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
-// import json from "rollup-plugin-json";
-// import liveReload from 'rollup-plugin-livereload';
 import replace from "rollup-plugin-replace";
-// import nodeBuiltins from "rollup-plugin-node-builtins";
 import nodeResolve from "rollup-plugin-node-resolve";
 import postcss from "rollup-plugin-postcss-modules";
-import uglify from "rollup-plugin-uglify";
-import { minify } from "uglify-es";
+import {
+    terser
+} from 'rollup-plugin-terser';
 
 const APP_ENV = process.env.APP_ENV || process.env.NODE_ENV;
 
@@ -84,8 +83,8 @@ const umdConfig = {
         ...baseConfig.plugins,
         ...(APP_ENV === `development`
             ? []
-            : [ uglify({}, minify) ])
-        ]
+            : [ terser({}) ])
+    ]
 };
 
 const esmConfig = {
@@ -99,7 +98,7 @@ const esmConfig = {
         ...baseConfig.plugins,
         ...(APP_ENV === `development`
             ? []
-            : [ uglify({}, minify) ])
+            : [ terser({}) ])
     ]
 };
 
