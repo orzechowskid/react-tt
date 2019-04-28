@@ -57,7 +57,7 @@ const baseConfig = {
         nodeResolve({
             browser: true,
             extensions: [ `.js` ],
-            module: true,
+            mainFields: [ `module`, `main` ],
             preferBuiltins: true
         }),
         babel({
